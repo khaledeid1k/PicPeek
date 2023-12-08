@@ -34,6 +34,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        dataBinding =true
+    }
 }
 
 dependencies {
@@ -57,4 +60,5 @@ dependencies {
     implementation(libs.coroutinesCore)
     implementation(libs.okhttp)
     implementation(libs.interceptor)
+    implementation(libs.lottie)
 }

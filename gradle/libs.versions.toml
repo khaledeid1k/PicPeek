@@ -19,6 +19,8 @@ coroutinesAndroid= "1.5.0"
 daggerHilt= "2.44"
 okhttp= "4.7.2"
 interceptor= "4.7.2"
+lottie = "3.4.0"
+
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -40,6 +42,9 @@ viewModel= { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", ver
 viewModelEx= { group = "androidx.lifecycle", name = "lifecycle-extensions", version.ref = "viewModelEx" }
 coroutinesAndroid= { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutinesAndroid" }
 coroutinesCore= { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutinesCore" }
+lottie= { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
+
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/album_title"
+            style="@style/title"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            tools:text="uidem molestiae enim"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edite_text_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_10dp"
+            app:hintEnabled="false"
+            android:layout_marginHorizontal="@dimen/_5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/album_title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/search_text"
+                style="@style/Widget.Material3.SearchBar"
+                android:hint="@string/search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableStart="@drawable/search"
+                android:drawablePadding="@dimen/_10dp"
+                android:elevation="0dp"
+
+                android:imeOptions="actionGo"
+                android:inputType="text"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/no_search_result"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/_10dp"
+            app:lottie_rawRes="@raw/no_result_of_search"
+            app:lottie_autoPlay="true"
+            android:visibility="visible"
+            app:layout_constraintTop_toBottomOf="@+id/edite_text_search"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:lottie_loop="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/search_result_list"
+            app:layout_constraintTop_toBottomOf="@+id/edite_text_search"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="@dimen/_0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
+            android:layout_margin="@dimen/_5dp"
+            tools:listitem="@layout/item_album_details" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
