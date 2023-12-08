@@ -43,7 +43,8 @@ viewModelEx= { group = "androidx.lifecycle", name = "lifecycle-extensions", vers
 coroutinesAndroid= { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutinesAndroid" }
 coroutinesCore= { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutinesCore" }
 lottie= { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
-
+hiltCompiler= { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "daggerHilt" }
+hilt= { group = "com.google.dagger", name = "hilt-android", version.ref = "daggerHilt" }
 
 
 [plugins]

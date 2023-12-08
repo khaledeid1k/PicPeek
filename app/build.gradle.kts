@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
+    kotlin("kapt")
+   id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -61,4 +63,10 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.interceptor)
     implementation(libs.lottie)
+    implementation(libs.hilt)
+    kapt(libs.hiltCompiler)
+
+}
+kapt {
+    correctErrorTypes = true
 }
