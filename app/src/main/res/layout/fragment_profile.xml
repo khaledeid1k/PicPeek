@@ -5,19 +5,71 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.example.picpeek.ui.profile.ProfileViewModel" />
+        <variable
+            name="adapter"
+            type="com.example.picpeek.ui.profile.AlbumsUserAdapter" />
     </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_animation_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:showWhenError="@{viewModel.userAlbums}"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_rawRes="@raw/error_network"
+        android:visibility="visible"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="false"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:showWhenError="@{viewModel.userAlbums}"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="@string/retry"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/_10dp"
+        android:onClick="@{() -> viewModel.retryToConnectNetWork()}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lottie_animation_error" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_animation_loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:showWhenLoading="@{viewModel.userAlbums}"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_rawRes="@raw/loading"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        app:showWhenSuccess="@{viewModel.userAlbums}"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.ProfileFragment">
+        tools:context=".ui.profile.ProfileFragment">
 
         <TextView
             android:id="@+id/profile_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/profile"
-            style="@style/title"
+            style="@style/big_title"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -25,8 +77,9 @@
             android:id="@+id/name"
             android:layout_width="@dimen/_0dp"
             android:layout_height="wrap_content"
-            style="@style/normal_text"
+            style="@style/title"
             tools:text="Leanne Graham"
+            android:text="@{viewModel.userDetails.toData().name}"
             android:maxLines="1"
             android:ellipsize="end"
             app:layout_constraintTop_toBottomOf="@+id/profile_title"
@@ -36,11 +89,11 @@
         <TextView
             android:id="@+id/address"
             android:layout_width="@dimen/_0dp"
-            android:maxLines="@integer/material_motion_duration_long_2"
+            android:maxLines="2"
             android:layout_height="wrap_content"
-            android:text="@string/profile"
-            style="@style/sub_normal_text"
+            style="@style/title"
             tools:text="Leanne Graham"
+            android:text="@{viewModel.userDetails.toData().address}"
             app:layout_constraintTop_toBottomOf="@+id/name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -63,9 +116,15 @@
             app:layout_constraintTop_toBottomOf="@+id/my_albums"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginVertical="@dimen/_10dp"
             android:layout_marginHorizontal="@dimen/_5dp"
-            tools:listitem="@layout/item_album" />
+            app:adapterRe="@{adapter}"
+            app:items="@{viewModel.userAlbums.toData()}"
+            tools:listitem="@layout/item_user_album" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

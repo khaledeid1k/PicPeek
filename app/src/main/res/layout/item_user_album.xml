@@ -4,7 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="userAlbum"
+            type="com.example.picpeek.domain.model.UserAlbums" />
+        <variable
+            name="albumsUserListener"
+            type="com.example.picpeek.ui.profile.AlbumsUserAdapter.AlbumsUserListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,8 +36,10 @@
             android:layout_width="@dimen/_0dp"
             android:minLines="1"
             android:ellipsize="end"
+            android:onClick="@{()->albumsUserListener.onClickAlbum(userAlbum.id)}"
+            android:text="@{userAlbum.title}"
             android:layout_height="wrap_content"
-            style="@style/sub_normal_text"
+            style="@style/title"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:text="lo lol lol ol oo ol ol o o o lo lolol" />
 
