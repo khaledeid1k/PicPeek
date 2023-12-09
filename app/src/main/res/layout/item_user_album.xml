@@ -5,10 +5,10 @@
 
     <data>
         <variable
-            name="userAlbum"
+            name="item"
             type="com.example.picpeek.domain.model.UserAlbums" />
         <variable
-            name="albumsUserListener"
+            name="listener"
             type="com.example.picpeek.ui.profile.AlbumsUserAdapter.AlbumsUserListener" />
     </data>
 
@@ -36,8 +36,8 @@
             android:layout_width="@dimen/_0dp"
             android:minLines="1"
             android:ellipsize="end"
-            android:onClick="@{()->albumsUserListener.onClickAlbum(userAlbum.id)}"
-            android:text="@{userAlbum.title}"
+            android:onClick="@{()->listener.onClickAlbum(item)}"
+            android:text="@{item.title}"
             android:layout_height="wrap_content"
             style="@style/title"
             app:layout_constraintBottom_toBottomOf="parent"

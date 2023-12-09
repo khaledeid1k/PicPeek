@@ -4,6 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="item"
+            type="com.example.picpeek.domain.model.AlbumsDetails" />
+        <variable
+            name="listener"
+            type="com.example.picpeek.ui.albums.AlbumsDetailsAdapter.AlbumsDetailsListener" />
 
     </data>
 
@@ -19,6 +25,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="0dp"
             android:scaleType="fitXY"
+            android:onClick="@{()->listener.onClickAlbumPhoto(item)}"
+            setImageUrl="@{item.url}"
             android:layout_height="wrap_content"
             tools:srcCompat="@drawable/ic_launcher_background" />
 

@@ -6,7 +6,9 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.picpeek.R
+import com.example.picpeek.domain.model.AlbumsDetails
 import com.example.picpeek.domain.model.UserAlbums
+import com.example.picpeek.ui.albums.AlbumsDetailsAdapter
 import com.example.picpeek.ui.profile.AlbumsUserAdapter
 
 @BindingAdapter("setImageUrl")
@@ -37,7 +39,11 @@ fun <T> View.showWhenSuccess(apiSate: ApiState<T>) {
 fun RecyclerView.setAdapter(adapterRe: AlbumsUserAdapter, items: List<UserAlbums>?) {
     adapter=adapterRe
     items?.let { adapterRe.setItems(it) }
-
 }
 
+@BindingAdapter(value = ["adapterRe", "items"], requireAll = false)
+fun RecyclerView.setAdapter(adapterRe: AlbumsDetailsAdapter, items: List<AlbumsDetails>?) {
+    adapter=adapterRe
+    items?.let { adapterRe.setItems(it) }
+}
 
