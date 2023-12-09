@@ -14,15 +14,11 @@ import javax.inject.Singleton
 object NetworkModule {
     @Singleton
     @Provides
-    fun provideService(
-        gsonConverterFactory: GsonConverterFactory,
-    ): ApiService {
+    fun provideService(): ApiService {
         return Retrofit.Builder()
             .baseUrl(com.example.picpeek.BuildConfig.BASE_URL)
-            .addConverterFactory(gsonConverterFactory)
+            .addConverterFactory(GsonConverterFactory.create())
             .build().create(ApiService::class.java)
     }
 
-    @Provides
-    fun provideGsonConverterFactory()=GsonConverterFactory.create()
 }

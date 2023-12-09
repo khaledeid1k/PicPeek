@@ -33,7 +33,6 @@ class AlbumDetailsViewModel @Inject constructor(
         return savedStateHandle[ALBUM_ID] ?: 0
     }
 
-
     fun getAlbumsDetails() {
         viewModelScope.launch {
             repo.getAlbumsDetails(getAlbumId()).collect {
@@ -41,7 +40,6 @@ class AlbumDetailsViewModel @Inject constructor(
                     is ApiState.Error -> {
                         _albumsDetail.value = ApiState.Error(it.message)
                     }
-
                     is ApiState.Loading -> {
                         _albumsDetail.value = ApiState.Loading
                     }
@@ -52,9 +50,6 @@ class AlbumDetailsViewModel @Inject constructor(
                         }
 
                         }
-
-
-
                     }
                 }
             }
