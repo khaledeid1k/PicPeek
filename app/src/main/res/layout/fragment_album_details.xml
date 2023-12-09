@@ -91,6 +91,7 @@
                 android:hint="@string/search"
                 android:background="@drawable/search_bar_background"
                 android:paddingStart="@dimen/_20dp"
+                android:text="@={viewModel.searchQuery}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:drawableStart="@drawable/search"
