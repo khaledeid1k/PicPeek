@@ -20,19 +20,19 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <com.airbnb.lottie.LottieAnimationView
+
+        <include
             android:id="@+id/lottie_animation_error"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            layout="@layout/error"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:showWhenError="@{viewModel.albumsDetail}"
-            app:layout_constraintTop_toBottomOf="@+id/edite_text_search"
-            app:lottie_rawRes="@raw/error_network"
-            android:visibility="visible"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="false"/>
+            app:layout_constraintTop_toBottomOf="@+id/edite_text_search">
+        </include>
 
 
         <com.google.android.material.button.MaterialButton
