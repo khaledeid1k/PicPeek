@@ -3,8 +3,9 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
     kotlin("kapt")
-   id("com.google.dagger.hilt.android")
+    id("com.google.dagger.hilt.android")
     id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -42,7 +43,7 @@ android {
     }
     buildFeatures {
         buildConfig = true
-        dataBinding =true
+        dataBinding = true
     }
 }
 
