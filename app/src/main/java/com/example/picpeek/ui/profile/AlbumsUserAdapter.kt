@@ -30,8 +30,8 @@ class AlbumsUserAdapter(private val albumsUserListener: AlbumsUserListener)  : R
     class AlbumsUserViewHolder (private val binding: ItemUserAlbumBinding):
         RecyclerView.ViewHolder(binding.root){
             fun bind(userAlbum: UserAlbums,albumsUserListener :AlbumsUserListener) {
-            binding.userAlbum = userAlbum
-            binding.albumsUserListener = albumsUserListener
+            binding.item = userAlbum
+            binding.listener = albumsUserListener
         }
     }
 
@@ -45,7 +45,7 @@ class AlbumsUserAdapter(private val albumsUserListener: AlbumsUserListener)  : R
         userAlbums = newItems
         diffResult.dispatchUpdatesTo(this)
     }
-    interface AlbumsUserListener { fun onClickAlbum(albumId: Int) }
+    interface AlbumsUserListener { fun onClickAlbum(userAlbum: UserAlbums) }
 
 
 
