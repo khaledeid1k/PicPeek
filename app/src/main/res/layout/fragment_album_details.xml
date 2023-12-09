@@ -5,16 +5,66 @@
 
     <data>
 
+        <variable
+            name="title"
+            type="String" />
+        <variable
+            name="viewModel"
+            type="com.example.picpeek.ui.albums.AlbumDetailsViewModel" />
+
+        <variable
+            name="adapter"
+            type="com.example.picpeek.ui.albums.AlbumsDetailsAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_animation_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:showWhenError="@{viewModel.albumsDetail}"
+            app:layout_constraintTop_toBottomOf="@+id/edite_text_search"
+            app:lottie_rawRes="@raw/error_network"
+            android:visibility="visible"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="false"/>
 
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:showWhenError="@{viewModel.albumsDetail}"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="@string/retry"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/_10dp"
+            android:onClick="@{() -> viewModel.retryToConnectNetWork()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lottie_animation_error" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_animation_loading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:showWhenLoading="@{viewModel.albumsDetail}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edite_text_search"
+            app:lottie_rawRes="@raw/loading"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"/>
         <TextView
             android:id="@+id/album_title"
             style="@style/title"
+            android:text="@{title}"
             android:layout_width="@dimen/_0dp"
             android:layout_height="wrap_content"
             tools:text="uidem molestiae enim"
@@ -39,44 +89,59 @@
                 android:id="@+id/search_text"
                 style="@style/Widget.Material3.SearchBar"
                 android:hint="@string/search"
+                android:background="@drawable/search_bar_background"
+                android:paddingStart="@dimen/_20dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:drawableStart="@drawable/search"
                 android:drawablePadding="@dimen/_10dp"
                 android:elevation="0dp"
-
                 android:imeOptions="actionGo"
                 android:inputType="text"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/no_search_result"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="@dimen/_10dp"
-            app:lottie_rawRes="@raw/no_result_of_search"
-            app:lottie_autoPlay="true"
-            android:visibility="visible"
-            app:layout_constraintTop_toBottomOf="@+id/edite_text_search"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:lottie_loop="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+<!--        <com.airbnb.lottie.LottieAnimationView-->
+<!--            android:id="@+id/no_search_result"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_margin="@dimen/_10dp"-->
+<!--            app:lottie_rawRes="@raw/no_result_of_search"-->
+<!--            app:lottie_autoPlay="true"-->
+<!--            android:visibility="visible"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/edite_text_search"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:lottie_loop="true"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent" />-->
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/search_result_list"
+        <androidx.constraintlayout.widget.ConstraintLayout
             app:layout_constraintTop_toBottomOf="@+id/edite_text_search"
-            android:layout_width="@dimen/_0dp"
-            android:layout_height="@dimen/_0dp"
+            android:layout_width="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="3"
-            android:layout_margin="@dimen/_5dp"
-            tools:listitem="@layout/item_album_details" />
+            app:showWhenSuccess="@{viewModel.albumsDetail}"
+            android:layout_height="0dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/search_result_list"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="@dimen/_0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="3"
+                adapterRe="@{adapter}"
+                items="@{viewModel.albumsDetail.toData()}"
+                android:layout_margin="@dimen/_10dp"
+                tools:listitem="@layout/item_album_details" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
