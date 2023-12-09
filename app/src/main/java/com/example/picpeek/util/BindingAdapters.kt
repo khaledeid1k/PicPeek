@@ -13,7 +13,7 @@ import com.example.picpeek.ui.profile.AlbumsUserAdapter
 
 @BindingAdapter("setImageUrl")
 fun ImageView.setImageUrl(url: String) {
-    Glide.with(this).load(url).error(R.drawable.ic_launcher_background)
+    Glide.with(this).load(url)
         .into(this)
 }
 
