@@ -103,19 +103,19 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-<!--        <com.airbnb.lottie.LottieAnimationView-->
-<!--            android:id="@+id/no_search_result"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:layout_margin="@dimen/_10dp"-->
-<!--            app:lottie_rawRes="@raw/no_result_of_search"-->
-<!--            app:lottie_autoPlay="true"-->
-<!--            android:visibility="visible"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/edite_text_search"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:lottie_loop="true"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent" />-->
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/no_search_result"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/_10dp"
+            app:lottie_rawRes="@raw/no_result_of_search"
+            app:lottie_autoPlay="true"
+            app:noResult="@{viewModel.albumsDetail.toData()}"
+            app:layout_constraintTop_toBottomOf="@+id/edite_text_search"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:lottie_loop="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             app:layout_constraintTop_toBottomOf="@+id/edite_text_search"

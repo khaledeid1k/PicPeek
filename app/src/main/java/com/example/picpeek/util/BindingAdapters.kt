@@ -27,6 +27,11 @@ fun <T> View.showWhenError(apiSate: ApiState<T>) {
     if (apiSate is ApiState.Error) makeVisible() else makeGone()
 
 }
+@BindingAdapter("app:noResult")
+fun <T> View.noResult(list: List<T>?) {
+    if (list!=null&&list.isEmpty()) makeVisible() else makeGone()
+
+}
 
 @BindingAdapter("app:showWhenSuccess")
 fun <T> View.showWhenSuccess(apiSate: ApiState<T>) {
