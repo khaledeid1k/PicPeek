@@ -34,16 +34,12 @@ fun <T> View.showWhenSuccess(apiSate: ApiState<T>) {
 
 }
 
-
 @BindingAdapter(value = ["adapterRe", "items"], requireAll = false)
-fun RecyclerView.setAdapter(adapterRe: AlbumsUserAdapter, items: List<UserAlbums>?) {
-    adapter=adapterRe
-    items?.let { adapterRe.setItems(it) }
-}
+fun RecyclerView.setAdapter(adapterRe: RecyclerView.Adapter<*>, items: List<*>?) {
+    adapter = adapterRe
+    when(adapterRe){
+        is AlbumsDetailsAdapter->{  items?.let { adapterRe.setItems(it as List<AlbumsDetails>) }}
+        is AlbumsUserAdapter->{  items?.let { adapterRe.setItems(it as List<UserAlbums>) }}
+    }
 
-@BindingAdapter(value = ["adapterRe", "items"], requireAll = false)
-fun RecyclerView.setAdapter(adapterRe: AlbumsDetailsAdapter, items: List<AlbumsDetails>?) {
-    adapter=adapterRe
-    items?.let { adapterRe.setItems(it) }
 }
-
