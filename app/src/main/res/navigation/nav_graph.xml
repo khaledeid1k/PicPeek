@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.picpeek.ui.ProfileFragment"
+        android:name="com.example.picpeek.ui.profile.ProfileFragment"
         android:label="ProfileFragment" >
         <action
             android:id="@+id/action_profileFragment_to_albumDetailsFragment"
@@ -14,6 +14,10 @@
     </fragment>
     <fragment
         android:id="@+id/albumDetailsFragment"
-        android:name="com.example.picpeek.ui.AlbumDetailsFragment"
-        android:label="AlbumDetailsFragment" />
+        android:name="com.example.picpeek.ui.albums.AlbumDetailsFragment"
+        android:label="AlbumDetailsFragment" >
+        <argument
+            android:name="userAlbums"
+            app:argType="com.example.picpeek.domain.model.UserAlbums" />
+    </fragment>
 </navigation>
