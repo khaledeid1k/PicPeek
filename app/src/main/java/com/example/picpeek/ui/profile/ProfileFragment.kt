@@ -6,6 +6,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.picpeek.R
 import com.example.picpeek.databinding.FragmentProfileBinding
+import com.example.picpeek.domain.model.UserAlbums
 import com.example.picpeek.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,9 +24,9 @@ class ProfileFragment :BaseFragment<FragmentProfileBinding>(),
         }
     }
 
-    override fun onClickAlbum(albumId: Int) {
+    override fun onClickAlbum(userAlbum: UserAlbums) {
         findNavController().navigate(
-            ProfileFragmentDirections.actionProfileFragmentToAlbumDetailsFragment(albumId)
+            ProfileFragmentDirections.actionProfileFragmentToAlbumDetailsFragment(userAlbum)
         )
     }
 
