@@ -49,18 +49,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lottie_animation_error" />
 
-        <com.airbnb.lottie.LottieAnimationView
+        <include
             android:id="@+id/lottie_animation_loading"
+            layout="@layout/loading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:showWhenLoading="@{viewModel.albumsDetail}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edite_text_search"
-            app:lottie_rawRes="@raw/loading"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"/>
+            app:layout_constraintTop_toBottomOf="@+id/edite_text_search">
+        </include>
+
         <TextView
             android:id="@+id/album_title"
             style="@style/title"
